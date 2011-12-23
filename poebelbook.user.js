@@ -135,11 +135,13 @@ var multiReplace = function(str, map) {
 };
 
 var waitTillLoaded = function(id, func) {
+    var tries = 4;
     var loop = function() {
         var found = document.getElementById(id);
         if(found) {
             func(found);
-        } else {
+        } else if(tries > 0){
+            tries = tries - 1;
             setTimeout(loop, 500);
         }
     };
