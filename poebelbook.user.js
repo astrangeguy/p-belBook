@@ -237,7 +237,6 @@ var fixSidebar = function() {
     waitTillLoaded('rightCol', function(rightcol) {
         walkDelayed(rightcol, [0,0,0,0,0,1], function(n) {
             eachAndNewChild(n, function(n) {
-                alert(n);
                 modText(walkTree(n, [1,2,0]), {'angestupst':'angepöbelt'});
                 modText(walkTree(n, [1,3,0,1]), {'Zurückstupsen':'Pöbel doch zurück!'});
             });
