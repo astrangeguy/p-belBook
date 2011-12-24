@@ -4,7 +4,7 @@
 // @description    EEEEYYYY!
 // @include        http://www.facebook.com/*
 // @include        https://www.facebook.com/*
-// @version        0.02
+// @version        0.03
 // ==/UserScript==
 
 /*
@@ -431,10 +431,15 @@ var enableStuff = function() {
             fn();
         } catch(e) {}
     });
-    waitTillLoaded('contentCol', function(e) {
-        e.addEventListener("DOMNodeInserted", function(e) {
-            fixPokePage();
-        }, false);
+    waitTillLoaded('globalContainer', function(e) {
+        waitTillLoaded('content', function(e) {
+            e.addEventListener("DOMNodeInserted", function(e) {
+                fixPokePage();
+                fixEgop();
+                fixSidebar();
+                fixNotificationPage();
+            }, false);
+        });
     });
 };
 ///*
