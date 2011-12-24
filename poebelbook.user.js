@@ -4,7 +4,7 @@
 // @description    EEEEYYYY!
 // @include        http://www.facebook.com/*
 // @include        https://www.facebook.com/*
-// @version        0.01
+// @version        0.02
 // ==/UserScript==
 
 /*
@@ -252,6 +252,20 @@ fixNotificationPage();
 */
 
 
+var fixEgop = function() {
+    waitTillLoaded('pagelet_ego_pane', function(egop) {
+        walkDelayed(egop, [0,0,1], function(n) {
+            eachAndNewChild(n, function(n) {
+                modText(walkTree(n, [1,2,0]), {'angestupst':'angepöbelt'});
+                modText(walkTree(n, [1,3,0,1]), {'Zurückstupsen':'Pöbel doch zurück!'});
+            });
+        });
+    });
+};
+/*
+fixEgop();
+*/
+
 var fixSidebar = function() {
     waitTillLoaded('rightCol', function(rightcol) {
         walkDelayed(rightcol, [0,0,0,0,0,1], function(n) {
@@ -408,6 +422,7 @@ var enableStuff = function() {
         fixPokePage,
         fixAppNames,
         fixSidebar,
+        fixEgop,
         fixNotificationPage,
         fixNotifications
     ]
